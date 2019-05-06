@@ -1,0 +1,87 @@
+﻿<Window x:Name="Mojave" x:Class="Mojave.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Mojave"
+        mc:Ignorable="d"
+        Title="Mojave"
+        Height="256" Width="256" MinWidth="256" MinHeight="256" MaxWidth="256" MaxHeight="256"
+        HorizontalContentAlignment="Stretch"
+        ScrollViewer.VerticalScrollBarVisibility="Disabled"
+        VerticalContentAlignment="Stretch"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ShowInTaskbar="True"
+        BorderBrush="White" Background="#FF212121" Icon="pack://siteoforigin:,,,/Resources/mojave.png"
+        >
+    
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="{x:Type Button}" x:Key="systemButton">
+                <Setter Property="Background" Value="#FF212121"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Grid.Resources>
+        <!--<Border Background="Gray" DockPanel.Dock="Top" Height="25" x:Name="titlebar" Margin="0,0,0,231"/>-->
+        
+        <Label VerticalContentAlignment="Center"  PreviewMouseDown="System_MouseMove" PreviewMouseMove="System_MouseMove"/>
+        <Button Click="OnClose" Margin="221,0,0,221">
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource systemButton}">
+                    <Style.Triggers>
+                        <Trigger Property="Button.IsMouseOver" Value="True">
+                            <Setter Property="Button.Background" Value="#FFFE5A50" />
+                        </Trigger>
+                        <Trigger Property="Button.IsPressed" Value="True">
+                            <Setter Property="Button.Background" Value="Red" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Canvas Height="25" Width="35">
+                <Line
+                    X1="12" Y1="8" 
+                    X2="22" Y2="18"    
+                    Stroke="White" StrokeThickness="0.75" Height="25" Width="35"/>
+                <Line
+                    X1="12" Y1="18"    
+                    X2="22" Y2="8"  
+                    Stroke="White" StrokeThickness="0.75" Height="25" Width="35"/>
+            </Canvas>
+        </Button>
+        <Label Content="Made by Donghyeok Tak" Foreground="White" Margin="0,226,0,0" FontFamily="NanumBarunpen" Padding="10,5,5,5" />
+        <Button Margin="166,216,0,0" Content="About" Background="#00000000" Foreground="#007ACC" BorderBrush="#00000000" FontFamily="NanumBarunpen" FontSize="13">
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource systemButton}"></Style>
+            </Button.Style>
+        </Button>
+        <Border BorderBrush="#007ACC" BorderThickness="0.75" CornerRadius="1.5">
+            <Button Width="169" Height="169" HorizontalAlignment="Center" VerticalAlignment="Center" Click="StartProcess">
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource systemButton}">
+                        <Style.Triggers>
+                            <Trigger Property="Button.IsMouseOver" Value="True">
+                                <Setter Property="Button.Background" Value="#FF595959" />
+                            </Trigger>
+                            <Trigger Property="Button.IsPressed" Value="True">
+                                <Setter Property="Button.Background" Value="#3F007ACC" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <StackPanel>
+                    <Image Source="pack://siteoforigin:,,,/Resources/mojave.png" Stretch="Uniform"/>
+                </StackPanel>
+            </Button>
+        </Border>
+    </Grid>
+</Window>
