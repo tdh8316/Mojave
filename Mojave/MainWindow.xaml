@@ -70,7 +70,7 @@
                     <Style TargetType="Button" BasedOn="{StaticResource systemButton}">
                         <Style.Triggers>
                             <Trigger Property="Button.IsMouseOver" Value="True">
-                                <Setter Property="Button.Background" Value="#FF595959" />
+                                <Setter Property="Button.Background" Value="#FF252525" />
                             </Trigger>
                             <Trigger Property="Button.IsPressed" Value="True">
                                 <Setter Property="Button.Background" Value="#3F007ACC" />

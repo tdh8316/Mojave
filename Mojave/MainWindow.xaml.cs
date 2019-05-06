@@ -10,7 +10,7 @@ namespace Mojave
     {
         private Point startPos;
         private readonly NotifyIcon notifyIcon = new NotifyIcon();
-        private readonly Thread MojaveThread = new Thread(new ThreadStart(MainThread.Run));
+        private readonly Thread MojaveThread = new Thread(new ThreadStart(MainThread.WallpaperChangeScheduler));
         private bool isStarted = false;
 
         public MainWindow()
