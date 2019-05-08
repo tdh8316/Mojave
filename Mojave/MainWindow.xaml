@@ -34,27 +34,23 @@
         <!--<Border Background="Gray" DockPanel.Dock="Top" Height="25" x:Name="titlebar" Margin="0,0,0,231"/>-->
         
         <Label VerticalContentAlignment="Center"  PreviewMouseDown="System_MouseMove" PreviewMouseMove="System_MouseMove"/>
-        <Button Click="OnClose" Margin="221,0,0,221">
+        <Button Click="OnClose" Margin="215,0,0,225">
             <Button.Style>
                 <Style TargetType="Button" BasedOn="{StaticResource systemButton}">
                     <Style.Triggers>
                         <Trigger Property="Button.IsMouseOver" Value="True">
-                            <Setter Property="Button.Background" Value="#FFFE5A50" />
+                            <Setter Property="Button.Background" Value="#3F3F41" />
                         </Trigger>
                         <Trigger Property="Button.IsPressed" Value="True">
-                            <Setter Property="Button.Background" Value="Red" />
+                            <Setter Property="Button.Background" Value="#BF007ACC" />
                         </Trigger>
                     </Style.Triggers>
                 </Style>
             </Button.Style>
-            <Canvas Height="25" Width="35">
+            <Canvas Height="20" Width="35">
                 <Line
-                    X1="12" Y1="8" 
-                    X2="22" Y2="18"    
-                    Stroke="White" StrokeThickness="0.75" Height="25" Width="35"/>
-                <Line
-                    X1="12" Y1="18"    
-                    X2="22" Y2="8"  
+                    X1="10" Y1="10" 
+                    X2="25" Y2="10"    
                     Stroke="White" StrokeThickness="0.75" Height="25" Width="35"/>
             </Canvas>
         </Button>
