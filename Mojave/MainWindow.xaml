@@ -55,11 +55,6 @@
             </Canvas>
         </Button>
         <Label Content="Made by Donghyeok Tak" Foreground="White" Margin="0,226,0,0" FontFamily="NanumBarunpen" Padding="10,5,5,5" />
-        <Button Margin="166,216,0,0" Content="About" Background="#00000000" Foreground="#007ACC" BorderBrush="#00000000" FontFamily="NanumBarunpen" FontSize="13">
-            <Button.Style>
-                <Style TargetType="Button" BasedOn="{StaticResource systemButton}"></Style>
-            </Button.Style>
-        </Button>
         <Border BorderBrush="#007ACC" BorderThickness="0.75" CornerRadius="1.5">
             <Button Width="169" Height="169" HorizontalAlignment="Center" VerticalAlignment="Center" Click="StartProcess">
                 <Button.Style>
