@@ -74,7 +74,6 @@ namespace Mojave
                     ToolTipIcon.Error
                 );
             }
-            // Wallpaper.SetWallpaper("B:/Mojave_py/resources/wallpapers/3.jpg");
         }
     }
 }
