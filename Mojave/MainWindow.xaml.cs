@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Windows;
-using System.Windows.Input;
-using System.Windows.Forms;
 using System.Threading;
+using System.Windows;
+using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace Mojave
 {
@@ -12,6 +12,7 @@ namespace Mojave
         private readonly NotifyIcon notifyIcon = new NotifyIcon();
         private readonly Thread MojaveThread = new Thread(new ThreadStart(MainThread.WallpaperChangeScheduler));
         private bool isStarted = false;
+        public NotifyIcon notify;
 
         public MainWindow()
         {
@@ -21,8 +22,39 @@ namespace Mojave
             notifyIcon.BalloonTipClosed += (_s, _e) => notifyIcon.Visible = false;
         }
 
+        private void OnWindowLoad(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ContextMenu menu = new ContextMenu();
+                notify = new NotifyIcon
+                {
+                    // TODO: notify.Icon
+                    Visible = true,
+                    ContextMenu = menu,
+                    Text = "Mojave",
+                    Icon = System.Drawing.SystemIcons.Application
+                };
+
+                MenuItem exitMenu = new MenuItem();
+                menu.MenuItems.Add(exitMenu);
+                exitMenu.Index = 0;
+                exitMenu.Text = "Exit";
+                exitMenu.Click += delegate (object c, EventArgs args)
+                {
+                    MojaveThread.Interrupt();
+                    notify.Dispose();
+                    Close();
+                };
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
         private void OnClose(object sender, RoutedEventArgs e)
-            => this.WindowState = WindowState.Minimized;
+            => WindowState = WindowState.Minimized;
 
         public void System_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
