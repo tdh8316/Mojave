@@ -4,9 +4,9 @@ namespace Mojave
 {
     class MainThread
     {
-        static private int latestIndex = 0;
+        private static int latestIndex = 0;
 
-        static private int GetBackgroundIndexFromTime(int t)
+        private static int GetBackgroundIndexFromTime(int t)
         {
             if (t > 24) return 16;
 
@@ -47,7 +47,7 @@ namespace Mojave
         }
 
 
-        static public void WallpaperChangeScheduler()
+        public static void WallpaperChangeScheduler()
         {
             for (; ; )
             {
@@ -61,8 +61,20 @@ namespace Mojave
                 {
                     latestIndex = index;
                 }
-                
-                System.Threading.Thread.Sleep(60000);
+
+                try
+                {
+                    System.Threading.Thread.Sleep(60000);
+                }
+                catch (System.Threading.ThreadInterruptedException)
+                {
+                    return;
+                }
+                catch (Exception error)
+                {
+                    _ = System.Windows.MessageBox.Show(error.Message, "An unhandled exception occurred.");
+                    return;
+                }
             }
         }
     }

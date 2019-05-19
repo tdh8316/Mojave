@@ -12,14 +12,17 @@ namespace Mojave
         private readonly NotifyIcon notifyIcon = new NotifyIcon();
         private readonly Thread MojaveThread = new Thread(new ThreadStart(MainThread.WallpaperChangeScheduler));
         private bool isStarted = false;
-        public NotifyIcon notify;
+        private NotifyIcon notify;
 
         public MainWindow()
         {
-            MojaveThread.IsBackground = true;
             InitializeComponent();
+            MojaveThread.IsBackground = true;
             notifyIcon.Icon = System.Drawing.Icon.ExtractAssociatedIcon(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            notifyIcon.BalloonTipClosed += (_s, _e) => notifyIcon.Visible = false;
+            notifyIcon.BalloonTipClosed += (_s, _e) =>
+            {
+                notifyIcon.Visible = false;
+            };
         }
 
         private void OnWindowLoad(object sender, RoutedEventArgs e)
@@ -36,27 +39,31 @@ namespace Mojave
                     Icon = System.Drawing.SystemIcons.Application
                 };
 
+                MenuItem activateMenu = new MenuItem();
+                _ = menu.MenuItems.Add(item: activateMenu);
+                activateMenu.Text = "Activate";
+                activateMenu.Click += delegate (object c, EventArgs args)
+                { StartProcess(); };
+
+                _ = menu.MenuItems.Add("-");
+
                 MenuItem exitMenu = new MenuItem();
-                menu.MenuItems.Add(exitMenu);
-                exitMenu.Index = 0;
+                _ = menu.MenuItems.Add(item: exitMenu);
                 exitMenu.Text = "Exit";
                 exitMenu.Click += delegate (object c, EventArgs args)
-                {
-                    MojaveThread.Interrupt();
-                    notify.Dispose();
-                    Close();
-                };
-            }
-            catch (Exception)
-            {
+                { Terminate(); };
 
+            }
+            catch (Exception error)
+            {
+                _ = System.Windows.MessageBox.Show(error.Message, "An unhandled exception occurred.");
             }
         }
 
         private void OnClose(object sender, RoutedEventArgs e)
             => WindowState = WindowState.Minimized;
 
-        public void System_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
+        public void OnDrag(object sender, System.Windows.Input.MouseEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
@@ -73,7 +80,7 @@ namespace Mojave
             }
         }
 
-        private void StartProcess(object sender, RoutedEventArgs e)
+        private void StartProcess(object sender = null, RoutedEventArgs e = null)
         {
             notifyIcon.Visible = true;
 
@@ -82,30 +89,50 @@ namespace Mojave
                 if (isStarted)
                 {
                     System.Windows.MessageBox.Show(
-                        "Couldn't start the main thread due to it has been started.\n" +
-                        "Please restart Mojave.",
-                        "Error while starting new thread.");
+                        "Error while starting new thread.",
+                        "Failed to activate Mojave due to it is already activated.\n" +
+                        "Please restart Mojave."
+                    );
                     return;
                 }
+
+                try
+                {
+                    MojaveThread.Start();
+                }
+                catch (Exception error)
+                {
+                    _ = System.Windows.MessageBox.Show(error.Message, "An unhandled exception occurred.");
+                    Terminate();
+                }
+                isStarted = true;
                 notifyIcon.ShowBalloonTip(
-                    3000,
-                    "Mojave is running!",
-                    "A background thread is started.\n",
+                    1500,
+                    "Mojave activated!",
+                    "You can deactivate Mojave in the system tray.",
                     ToolTipIcon.Info
                 );
-                MojaveThread.Start();
-                isStarted = true;
             }
 
             else
             {
                 notifyIcon.ShowBalloonTip(
-                    3000,
+                    1500,
                     "Mojave is already running!",
-                    "So the Mojave process did not start.",
+                    "You can deactivate Mojave in the system tray.",
                     ToolTipIcon.Error
                 );
             }
+        }
+
+        private void Terminate()
+        {
+            if (MojaveThread.IsAlive)
+            {
+                MojaveThread.Interrupt();
+            }
+            notify.Dispose();
+            Close();
         }
     }
 }

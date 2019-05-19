@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Mojave"
         mc:Ignorable="d"
         Title="Mojave"
         Height="256" Width="256" MinWidth="256" MinHeight="256" MaxWidth="256" MaxHeight="256"
@@ -14,9 +13,9 @@
         AllowsTransparency="True"
         ShowInTaskbar="False"
         BorderBrush="White" Background="#FF212121" Icon="pack://siteoforigin:,,,/Resources/mojave.png"
-        Loaded="OnWindowLoad"
+        Loaded="OnWindowLoad" ResizeMode="NoResize"
         >
-    
+
     <Grid>
         <Grid.Resources>
             <Style TargetType="{x:Type Button}" x:Key="systemButton">
@@ -32,9 +31,7 @@
                 </Setter>
             </Style>
         </Grid.Resources>
-        <!--<Border Background="Gray" DockPanel.Dock="Top" Height="25" x:Name="titlebar" Margin="0,0,0,231"/>-->
-        
-        <Label VerticalContentAlignment="Center"  PreviewMouseDown="System_MouseMove" PreviewMouseMove="System_MouseMove"/>
+        <Label VerticalContentAlignment="Center"  PreviewMouseDown="OnDrag" PreviewMouseMove="OnDrag"/>
         <Button Click="OnClose" Margin="215,0,0,225">
             <Button.Style>
                 <Style TargetType="Button" BasedOn="{StaticResource systemButton}">
@@ -55,25 +52,24 @@
                     Stroke="White" StrokeThickness="0.75" Height="25" Width="35"/>
             </Canvas>
         </Button>
-        <Label Content="Made by Donghyeok Tak" Foreground="White" Margin="0,226,0,0" FontFamily="NanumBarunpen" Padding="10,5,5,5" />
-        <Border BorderBrush="#007ACC" BorderThickness="0.75" CornerRadius="1.5">
-            <Button Width="169" Height="169" HorizontalAlignment="Center" VerticalAlignment="Center" Click="StartProcess">
-                <Button.Style>
-                    <Style TargetType="Button" BasedOn="{StaticResource systemButton}">
-                        <Style.Triggers>
-                            <Trigger Property="Button.IsMouseOver" Value="True">
-                                <Setter Property="Button.Background" Value="#FF252525" />
-                            </Trigger>
-                            <Trigger Property="Button.IsPressed" Value="True">
-                                <Setter Property="Button.Background" Value="#3F007ACC" />
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-                <StackPanel>
-                    <Image Source="pack://siteoforigin:,,,/Resources/mojave.png" Stretch="Uniform"/>
-                </StackPanel>
-            </Button>
-        </Border>
+        <Label Content="?" FontSize="72" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+        <Label Content="Made by Donghyeok Tak" Foreground="White" Margin="0,226,0,0" Padding="10,5,5,5" FontSize="10" />
+        <Button Width="60" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Click="StartProcess" Margin="185,215,9,9" BorderBrush="#FF514949" IsDefault="True">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Style.Triggers>
+                        <Trigger Property="Button.IsMouseOver" Value="True">
+                            <Setter Property="Button.Background" Value="#FF747474" />
+                        </Trigger>
+                        <Trigger Property="Button.IsPressed" Value="True">
+                            <Setter Property="Button.Background" Value="#3F007ACC" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Label Content="Start"/>
+        </Button>
+
+        <Border BorderBrush="#007ACC" BorderThickness="0.75" CornerRadius="1.5" />
     </Grid>
 </Window>
