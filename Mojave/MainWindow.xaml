@@ -12,7 +12,7 @@
         VerticalContentAlignment="Stretch"
         WindowStyle="None"
         AllowsTransparency="True"
-        ShowInTaskbar="True"
+        ShowInTaskbar="False"
         BorderBrush="White" Background="#FF212121" Icon="pack://siteoforigin:,,,/Resources/mojave.png"
         Loaded="OnWindowLoad"
         >
