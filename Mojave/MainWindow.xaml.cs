@@ -32,7 +32,6 @@ namespace Mojave
                 ContextMenu menu = new ContextMenu();
                 notify = new NotifyIcon
                 {
-                    // TODO: notify.Icon
                     Visible = true,
                     ContextMenu = menu,
                     Text = "Mojave",
