@@ -43,6 +43,12 @@ namespace Mojave
                 activateMenu.Text = "Activate";
                 activateMenu.Click += delegate (object c, EventArgs args)
                 { StartProcess(); };
+                
+                MenuItem showMenu = new MenuItem();
+                _ = menu.MenuItems.Add(item: showMenu);
+                showMenu.Text = "Show window";
+                showMenu.Click += delegate (object c, EventArgs args)
+                { WindowState = WindowState.Maximized; };
 
                 _ = menu.MenuItems.Add("-");
 
