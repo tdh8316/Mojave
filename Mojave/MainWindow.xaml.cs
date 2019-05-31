@@ -35,7 +35,7 @@ namespace Mojave
                     Visible = true,
                     ContextMenu = menu,
                     Text = "Mojave",
-                    Icon = System.Drawing.SystemIcons.Application
+                    Icon = new System.Drawing.Icon("resources/mojave_sun.ico")
                 };
 
                 MenuItem activateMenu = new MenuItem();
