@@ -69,5 +69,18 @@
             </Button.Style>
             <Label Content="Start"/>
         </Button>
+        <Image Source="Resources/example.jpg" RenderTransformOrigin="0.5,0.5" Opacity="0.75" >
+            <Image.Effect>
+                <DropShadowEffect/>
+            </Image.Effect>
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="0.75" ScaleY="0.75"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
     </Grid>
 </Window>
