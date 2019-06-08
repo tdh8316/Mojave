@@ -31,16 +31,17 @@
                 </Setter>
             </Style>
         </Grid.Resources>
+        <Border BorderBrush="#007ACC" BorderThickness="0.75" CornerRadius="1.5" />
         <Label VerticalContentAlignment="Center"  PreviewMouseDown="OnDrag" PreviewMouseMove="OnDrag"/>
-        <Button Click="OnClose" Margin="215,0,0,225">
+        <Button Click="OnClose" Margin="214,1,1,224">
             <Button.Style>
-                <Style TargetType="Button" BasedOn="{StaticResource systemButton}">
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource systemButton}">
                     <Style.Triggers>
-                        <Trigger Property="Button.IsMouseOver" Value="True">
-                            <Setter Property="Button.Background" Value="#3F3F41" />
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#3F3F41" />
                         </Trigger>
-                        <Trigger Property="Button.IsPressed" Value="True">
-                            <Setter Property="Button.Background" Value="#BF007ACC" />
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#BF007ACC" />
                         </Trigger>
                     </Style.Triggers>
                 </Style>
@@ -52,24 +53,21 @@
                     Stroke="White" StrokeThickness="0.75" Height="25" Width="35"/>
             </Canvas>
         </Button>
-        <Label Content="?" FontSize="72" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
         <Label Content="Made by Donghyeok Tak" Foreground="White" Margin="0,226,0,0" Padding="10,5,5,5" FontSize="10" />
         <Button Width="60" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Click="StartProcess" Margin="185,215,9,9" BorderBrush="#FF514949" IsDefault="True">
             <Button.Style>
-                <Style TargetType="Button">
+                <Style TargetType="{x:Type Button}">
                     <Style.Triggers>
-                        <Trigger Property="Button.IsMouseOver" Value="True">
-                            <Setter Property="Button.Background" Value="#FF747474" />
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF747474" />
                         </Trigger>
-                        <Trigger Property="Button.IsPressed" Value="True">
-                            <Setter Property="Button.Background" Value="#3F007ACC" />
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#3F007ACC" />
                         </Trigger>
                     </Style.Triggers>
                 </Style>
             </Button.Style>
             <Label Content="Start"/>
         </Button>
-
-        <Border BorderBrush="#007ACC" BorderThickness="0.75" CornerRadius="1.5" />
     </Grid>
 </Window>
