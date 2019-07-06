@@ -3,11 +3,7 @@
 
 Time-shifting desktops that match the hour of the day wherever you are.
 
-## Wallpapers
-
-The 16 images correspond to the following times of the day:
-
-	- TODO
+![screenshot](./screenshot/mojave.png)
 
 ## TODO
  - [x] System tray menu
