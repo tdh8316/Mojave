@@ -54,7 +54,21 @@
             </Canvas>
         </Button>
 
-        
+        <Button Click="Github" Margin="10,190,200,35">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource systemButton}">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#3F3F41" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#BF007ACC" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Label Content="Github" Foreground="White" Width="46" ></Label>
+        </Button>
         <Label Content="Made by Donghyeok Tak" Foreground="White" Margin="0,226,0,0" Padding="10,5,5,5" FontSize="10" />
         <Button Width="60" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Click="StartProcess" Margin="185,215,9,9" BorderBrush="#FF514949" IsDefault="True">
             <Button.Style>
