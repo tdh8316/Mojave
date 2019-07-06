@@ -53,6 +53,8 @@
                     Stroke="White" StrokeThickness="0.75" Height="25" Width="35"/>
             </Canvas>
         </Button>
+
+        
         <Label Content="Made by Donghyeok Tak" Foreground="White" Margin="0,226,0,0" Padding="10,5,5,5" FontSize="10" />
         <Button Width="60" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Click="StartProcess" Margin="185,215,9,9" BorderBrush="#FF514949" IsDefault="True">
             <Button.Style>

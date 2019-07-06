@@ -68,6 +68,9 @@ namespace Mojave
         private void OnClose(object sender, RoutedEventArgs e)
             => WindowState = WindowState.Minimized;
 
+        private void Github(object sender, RoutedEventArgs e)
+            => System.Diagnostics.Process.Start("explorer.exe", "https://github.com/tdh8316/Mojave");
+
         public void OnDrag(object sender, System.Windows.Input.MouseEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
