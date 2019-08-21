@@ -5,7 +5,5 @@ Time-shifting desktops that match the hour of the day wherever you are.
 
 ![screenshot](./screenshot/mojave.png)
 
-## TODO
- - [x] System tray menu
- - [ ] Enhance thread management
- - [ ] Elegant UI/UX
+# Download
+ - [Mojave for Windows](https://github.com/tdh8316/Mojave/releases)
