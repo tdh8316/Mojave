@@ -107,6 +107,8 @@ namespace Mojave
                 try
                 {
                     MojaveThread.Start();
+                    OnOffLabel.Content = "Running";
+                    StartButton.IsEnabled = false;
                 }
                 catch (Exception error)
                 {
