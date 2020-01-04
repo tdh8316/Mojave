@@ -63,6 +63,9 @@ namespace Mojave
             {
                 _ = System.Windows.MessageBox.Show(error.Message, "An unhandled exception occurred.");
             }
+
+            WindowState = WindowState.Minimized;
+            StartProcess();
         }
 
         private void OnClose(object sender, RoutedEventArgs e)
