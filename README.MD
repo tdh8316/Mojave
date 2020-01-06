@@ -7,3 +7,8 @@ Time-shifting desktops that match the hour of the day wherever you are.
 
 # Download
  - [Mojave for Windows](https://github.com/tdh8316/Mojave/releases)
+
+# License
+Licensed under the MIT License
+
+Copyright 2020 `Donghyeok Tak`
