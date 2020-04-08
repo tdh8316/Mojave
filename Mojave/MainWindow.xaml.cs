@@ -121,7 +121,7 @@ namespace Mojave
                 isStarted = true;
                 notifyIcon.ShowBalloonTip(
                     1500,
-                    "Mojave activated!",
+                    "Mojave is running!",
                     "You can deactivate Mojave in the system tray.",
                     ToolTipIcon.Info
                 );
